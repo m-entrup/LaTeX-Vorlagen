@@ -1,1 +1,7 @@
 *~
+*.aus
+*.fbd_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
