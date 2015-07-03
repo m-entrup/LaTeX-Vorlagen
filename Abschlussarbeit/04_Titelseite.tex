@@ -1,0 +1,23 @@
+\begin{titlepage}
+    \vspace*{4cm}
+    \begin{center}
+        \Huge
+        \textbf{\varTitel}\\
+        \vspace{2,5cm}
+        \IfFileExists{Bilder/titelseite.png}{
+            \cImage{Bilder/titelseite.png}
+        } % Nach \IfFileExists muss eine Leerzeile eingefügt werden
+
+        \vspace{1,5cm}        
+        \large
+        \varAutor
+        \normalsize
+        \newboolean{showEmail}
+        \setboolean{showEmail}{\varZeigeEmail}
+        \ifthenelse{\boolean{showEmail}}{\\\textit{\varEmail}\\}{}
+        \vspace{1,5cm}
+        \large
+        \varInfo \\
+        \varDate
+    \end{center}
+\end{titlepage}

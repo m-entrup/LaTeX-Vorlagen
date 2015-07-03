@@ -1,0 +1,257 @@
+\chapter{Einleitung}
+
+% Anmerkung: Steht \LaTeX einzeln im Text, dann muss es mit \ beendet werden. Nur so wird auch das folgende Leerzeichen berücksichtigt.
+Diese Vorlage soll euch den Einstieg in \LaTeX\ erleichtern. Habt ihr schon eine \LaTeX-Distribution installiert und am besten einen \LaTeX-Editor mit Syntax-Hervorhebung und Autovervollständigung, dann könnt ihr direkt loslegen. Am Anfang reicht es aus die Dateien \verb+03_Variablen.tex+, \verb+10_Inhalt.tex+ und \verb+20_Anhang.tex+\footnote{Die Zahlen dienen dazu die Dateien zu sortieren. Ich habe außerdem keine fortlaufenden Zahlen verwendet, damit es einfach möglich ist weitere Dokumente zwischen die bestehenden einzufügen.} zu bearbeiten. Benötigt ihr keinen Anhang, dann löscht einfach die Datei \verb+20_Anhang.tex+.
+
+Habt ihr euch erst mal etwas mit \LaTeX\ beschäftigt, dann sollte ihr auch mal in die anderen Dateien schauen. Die vielen Kommentare helfen hoffentlich dabei zu verstehen, was die einzelnen Befehle bewirken. Die umfangreichen Dokumentationen zu den verwendeten Paketen sind aber auch im Anhang (\ref{anhang}) verlinkt.
+
+\newpage
+\chapter{Diverse Anleitungen}
+\section{Formeln}
+
+\LaTeX\ ist bei Naturwissenschaftlern sehr beliebt, da man auch komplexe Formeln einfach einfügen kann. Auch hier möchte ich wieder darauf hinweisen, dass man einen Editor mit Syntax-Hervorhebung und Autovervollständigung verwenden sollte. Die Autovervollständigung hilft dabei Fehler zu vermeiden und mit der Syntax-Hervorhebung ist es einfacher den Überblick zu behalten und Fehler zu finden.
+
+\subsection{Formeln im Text}
+
+Möchte man im Fließtext Formeln verwenden, dann benutzt man das Dollarzeichen \verb+$+. So wird aus \verb+$\frac{1}{2}$+ der Bruch $\frac{1}{2}$.
+
+\subsection{Die Align-Umgebung}
+
+\LaTeX\ bietet eine Vielzahl von Möglichkeiten abgesetzte Formeln zu erstellen. Ich empfehle immer die Align-Umgebung. Zum einen kann man mit ihr mehrzeilige Formeln erzeugen und außerdem kann man die einzelnen Zeilen der mehrzeiligen Formeln zueinander ausrichten.
+
+\begin{verbatim}
+\begin{align}
+     &Formel\label{formel}\\
+     eine weitere &Formel
+\end{align}
+\end{verbatim}
+
+\begin{align}
+    &Formel\label{formel}\\
+    eine weitere &Formel
+\end{align}
+
+Wie im normalen Text, erzeugt man mit \verb+\\+ einen Zeilenumbruch. Mit dem \verb+&+ werden die Zeilen ausgerichtet. Es fällt auch auf, dass alle Leerzeichen ignoriert werden und Text kursiv gedruckt wird.
+
+Durch das Label kann ich auf Formel \ref{formel} verweisen. Die entsprechenden Nummern werden automatisch von \LaTeX\ erzeugt.
+
+Das Problem mit dem kursiv gedruckten Text kann man ganz einfach lösen.
+
+\begin{verbatim}
+\begin{align}
+    \text{Text in einer Formel }\int_{x=0}^\infty x^2+4x+16 \nonumber
+\end{align}
+\end{verbatim}
+
+\begin{align}
+    \text{Text in einer Formel }\int_{x=0}^\infty x^2+4x+16 \nonumber
+\end{align}
+
+Mit dem Befehl \verb+\nonumber+ kann man die Nummerierung unterdrücken. Bei mehrzeiligen Formeln muss \verb+\nonumber+ vor den \verb+\\+ der entsprechenden Zeile stehen.
+
+\section{Einheiten richtig darstellen}
+
+Einheiten erzeugt man am besten mit dem Paket unit. Ein Beispiel soll zeigen wie es funktioniert.
+
+\begin{verbatim}
+\begin{align}
+    s &= \unit[15]{m} \nonumber \\
+    t &= \unit[3\cdot 10^{-6}]{s} \nonumber \\
+    \Rightarrow v &= \unitfrac[5000]{km}{s}
+\end{align}
+\end{verbatim}
+
+\begin{align}
+    s &= \unit[15]{m} \nonumber \\
+    t &= \unit[3\cdot 10^{-6}]{s} \nonumber \\
+    \Rightarrow v &= \unitfrac[5000]{km}{s}
+\end{align}
+
+\section{Tabelle}
+
+Tabellen sind sehr nützlich um Messwerte, aber auch die Ergebnisse einer Auswertung übersichtlich darzustellen. Auch hier gilt wieder, dass ein guter Editor sehr hilfreich ist. Das Grundgerüst einer Tabelle kann man nämlich meist mit einem Wizard erstellen. Noch einfacher geht es, wenn man direkt mit Exel oder OpenOffice/LibreOffice Calc die Tabellen erzeugt. Plugins, die diese Aufgabe erledigen, kann man einfach mit einer Suchmaschine finden.
+
+Diese Vorlage bietet schon ein paar fortgeschrittene Funktionen für das Arbeiten mit Tabellen. Tabelle \ref{tab:1} zeigt die Ausrichtung an Kommata und $\pm$.
+
+\begin{verbatim}
+\begin{table}[h!]
+    \centering	% ist bis \end{table} gültig
+    \caption{Dies ist ein Tabelle}
+    \label{tab:1}
+    \begin{tabular}{c , p}
+        Bezeichnung & \multicolumn{1}{c}{Kommata}
+        & \multicolumn{1}{c}{$\pm$}\\\hline
+        Messung 1 & 1,25 & 5p1\\
+        Messung 2 & 1,5 & 6,0p1,3\\
+        Messung 3 & 2,25 & 7p1\\
+        Messung 4 & 1,251 & 9p1\\
+        Messung 5 & 1 & 11p10\\
+    \end{tabular}
+\end{table}
+\end{verbatim}
+
+\begin{table}[h!]
+    \centering	% ist bis \end{table} gültig
+    \caption{Dies ist ein Tabelle}
+    \label{tab:1}
+    \begin{tabular}{c , p}
+        Bezeichnung & \multicolumn{1}{c}{Kommata} & \multicolumn{1}{c}{$\pm$}\\\hline
+        Messung 1 & 1,25 & 5p1\\
+        Messung 2 & 1,5 & 6,0p1,3\\
+        Messung 3 & 2,25 & 7p1\\
+        Messung 4 & 1,251 & 9p1\\
+        Messung 5 & 1 & 11p10\\
+        \end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item Ausrichtung an Kommata: \verb+,+
+    \item Ausrichtung an \verb+\pm+: \verb+p+ (wobei auch in der Tabelle \verb+p+ statt \verb+\pm+ benutzt wird)
+    \item \verb+\multicolumn{1}{c}{Text}+ sorgt dafür, dass eine abweichende Ausrichtung (hier \verb+{c}+ statt \verb+,+ bzw. \verb+p+) genutzt wird.
+\end{itemize}
+
+\section{Zitate}
+
+In einer wissenschaftlichen Arbeit ist richtiges Zitieren sehr wichtig. \LaTeX\ erspart einem dabei viel Arbeit, indem es das Literaturverzeichnis selbstständig erstellt. Die Datei \verb+literatur.bib+ spielt dabei eine wichtige Rolle. In dieser sammelt man die Referenzen zu Artikeln, Büchern usw. im BibTeX-Format. Für die Anleitung zu den Experimentellen Übungen legt man z.B. den folgenden Eintrag an.
+
+\begin{verbatim}
+    @BOOK{anleitung2011,
+        editor = {Donath, Markus and Schmidt, Anke},
+        title = {Anleitung zu den Experimentellen Übungen
+            zur Mechanik und Elektrizitätslehre},
+        publisher = {Physikalisches Institut},
+        year = {2011},
+        edition = {Auflage 2011},
+        organization = {WWU Münster}
+    }
+\end{verbatim}
+
+
+Ein guter \LaTeX-Editor kann sogar die Keys (hier \verb+anleitung2011+) automatisch auflisten, wenn man mit dem Befehl \verb+\cite{}+ ein Zitat einfügt. Die Zitate erscheinen in Form von \cite{heil2012}, \cite{anleitung2012} und \cite{anleitung2013} im Text. Dabei bestimmt \verb+\bibliographystyle{}+ das Aussehen der Verweise. In der Datei \verb+03_Variablen.tex+ kann man die verwendete Style-Datei ändern. Voreingestellt ist \verb+unsrtdin+, das einfache Zahlen verwendet und die Reihenfolge im Text beachtet. \verb+alphadin+ nutzt statt dessen Abkürzungen der Autoren und sortiert das Literaturverzeichnis alphabetisch. Es gibt aber noch viele weitere Stile, die man verwenden kann. Eine Liste mit Stilen für deutsche Dokumente sind unter \url{http://www.ctan.org/tex-archive//bibliography/bibtex/contrib/german/din1505} zu finden.
+
+\section{Silbentrennung}
+
+Fehlende Silbentrennung ist ein Problem, das häufig auftritt, wenn man mit vielen Fremdwörtern arbeitet. Deshalb möchte ich auf die entsprechende Anleitung bei Wikibooks verweisen. Damit beseitigt man sehr leicht zu kurze, oder zu lange Zeilen, die durch fehlende Silbentrennung entstanden sind. Der entsprechende Beitrag ist unter \url{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_Silbentrennung}\footnote{\texttt{\%C3\%B6} wird vom Browser als ö interpretiert. Ich muss diese Zeichenfolge verwenden, da \LaTeX\ keine Umlaute in einer URL erlaubt.} zu finden.
+
+\section{latexmk}
+
+Um ein vollständiges Dokument mit \LaTeX\ zu erzeugen sind meist mehrere Durchläufe von \verb+latex+ bzw. \verb+pdflatex+ nötig. Verwendet man Zitate, dann muss man zusätzlich noch \verb+bibtex+ aufrufen. Es gibt jedoch mehrere Programme, die das Erzeugen von Dokumenten mit \LaTeX\ vereinfachen. Eines davon ist \textbf{latexmk}. \textbf{latexmk} sollte automatisch mit jeder \LaTeX-Distribution installiert werden. Zusätzlich ist noch Perl (\url{http://www.perl.org/}) notwendig, das unter Windows extra installiert werden muss. Bei Linux ist es für gewöhnlich schon installiert.\\
+Möchte man eine PDF-Datei erzeugen, dann reicht es aus 
+
+\begin{verbatim}
+   latexmk -pdf "00_protokoll.tex"
+\end{verbatim}
+
+auszuführen um das fertige Dokument 00\_protokoll.pdf zu erhalten. \textbf{latexmk} überprüft dabei automatisch welche Dateien noch aktuell sind und führt entsprechend nur die nötigen Schritte aus. Hat sich z.\,B. nichts geändert, dann gibt \textbf{latexmk} aus 
+
+\begin{verbatim}
+   Latexmk: All targets (00_protokoll.pdf) are up-to-date
+\end{verbatim}
+
+\textbf{latexmk} lässt sich mit fast jedem \LaTeX-Editor nutzen. Bei \textbf{LATEXila} ist \textbf{latexmk} z.\,B. als Standard für das Erzeugen von PDF-Dateien eingerichtet. Bei vielen anderen Editoren muss man es selber als Alternative für \textbf{pdflatex} einstellen.
+
+\section{Die Verbatim-Umgebung}
+
+In dieser Vorlage wird häufig die Umgebung \textbf{verbatim} verwendet. Damit ist es möglich Textblöcke ohne die üblich \LaTeX-Formatierung darzustellen. Außerdem wird eine Schriftart verwendet, bei der alle Zeichen die gleiche Breite besitzen. Solch eine Umgebung wird auch häufig verwendet um den Quellcode von Programmen darzustellen.
+
+\begin{verbatim}
+    \begin{verbatim}
+        Text, dessen Formatierung nicht berücksichtigt wird.
+    \end{v...m}
+\end{verbatim}
+
+\verb+\end{v...m}+ muss man natürlich durch \verb+\end{verbatim}+ ersetzen. Ich kann es in diesem Fall nicht verwenden, da sonst die Verbatim-Umgebung zu früh beendet wird. Möchte man direkt im Text diese Formatierung anwenden, dann lässt sich 
+
+\begin{verbatim}
+    \verb+Text, dessen Formatierung nicht berücksichtigt wird.+
+\end{verbatim}
+
+verwenden. Dabei ist + ein Trennzeichen, das zum Abgrenzen benutzt wird. + kann dabei durch ein beliebiges anderes Trennzeichen ersetzt werden, so funktioniert z.B. auch
+
+\begin{verbatim}
+    \verb?Text, dessen Formatierung nicht berücksichtigt wird.?
+\end{verbatim}
+
+\newpage
+\chapter{Nützliche Literatur}
+
+Zu \LaTeX\ gibt es eine Vielzahl von Büchern und Webseiten, die sich mit dem Thema beschäftigen. Dabei kann man aber auch ohne Probleme auf ältere Literatur zurückgreifen, da das meiste auch noch für die aktuellen \LaTeX\ Versionen gültig ist.
+
+Hier möchte ich auch auf die Anleitung des RRZN Hannover hinweisen, die man günstig im ZIV beziehen kann. Einen Überblick über den Inhalt der Anleitung erhält man auf \url{http://www.rrzn.uni-hannover.de/buch.html?&titel=latex}.
+
+\begin{itemize}
+    \item Wikibooks - Die Informationen über \LaTeX\ sind sehr umfangreich. Im englischen kann man eine PDF-Datei mit einem Umfang von fast 500 Seiten herunterladen.\\
+    \url{https://en.wikibooks.org/wiki/LaTeX}\\
+    \url{https://de.wikibooks.org/wiki/LaTeX-Kompendium}
+    \item Formel-Editor - Auf der Webseite CODECOGS wird ein einfach zu bedienender Formel-Editor angeboten. Die Formeln kann man auch direkt als Grafik abspeichern, um diese außerhalb von \LaTeX\ zu nutzen. Auch die weiteren Inhalte der Webseite sollte man sich ansehen, da es viele Nützliche Grafiken gibt,
+    die unter GNU General Public License (GPL) stehen.\\
+    \url{http://www.codecogs.com/latex/eqneditor.php?lang=de-de}\\
+    \url{http://www.codecogs.com/index.php}
+    \item Anleitungen zu Paketen - Weiß man nicht, was ein Paket an Funktionen bietet, dann sollte man bei CTAN nach dessen Namen suchen. Als Ergebnis erhält man nicht nur die vollständige Anleitung, sondern auch Links zu ähnlichen Paketen und Themenseiten.\\
+    \url{http://ctan.org/}
+    \item DANTE, Deutschsprachige Anwendervereinigung TeX e.V. - Diese Webseite darf natürlich nicht fehlen. Dort gibt es Anleitungen, Buchtipps und vieles mehr.\\
+    \url{http://www.dante.de/}
+    \item ubuntuusers - Als Ubuntu-Nutzer muss ich natürlich auch auf den \LaTeX-Eintrag im Wiki von ubuntuusers verweisen. Das Wiki bietet keine große Fülle an Informationen, aber die aufgeführten Links sind sehr nützlich.\\
+    \url{http://wiki.ubuntuusers.de/LaTeX}
+\end{itemize}
+
+\chapter{\LaTeX-Distributionen und Editoren}
+
+Mehrmals habe ich schon empfohlen einen guten Editor zu verwenden. Ich möchte deshalb nicht versäumen ein paar Vorschläge zu unterbreiten. Zuerst möchte ich aber mit Hinweisen zu den unterschiedlichen \LaTeX-Distributionen anfangen.
+
+\section{\LaTeX-Distributionen}
+
+Am weitesten verbreitet ist sehr wahrscheinlich TeX Live. Die meisten Linux"=Distributionen nutzen es als Standard (bis 2006 war es meist teTeX) und auch für Windows gibt es einen guten Installer. Als Alternative für Windows gibt es noch MiKTeX. Ich empfehle aber auch unter Windows die Nutzung von TeX Live, da es für alle gebräuchlichen Systeme (Unix, Linux, Windows und Mac) zur Verfügung steht.
+
+Auf das richtige Einrichten der \LaTeX-Distributionen möchte ich hier nicht eingehen, da dies normalerweise keine Probleme bereiten sollte und im Internet ausreichend Anleitungen zu finden sind. Wie man an einem Uni-PC die vom ZIV zur Verfügung gestellte Distribution verwendet, das ist im Anhang \ref{sec:texmaker_conf} am Beispiel von Texmaker beschrieben.
+
+\begin{itemize}
+    \item \url{http://www.tug.org/texlive/}
+    \item \url{http://www.tug.org/tetex/}
+    \item \url{http://miktex.org/}
+    \item \url{http://tug.org/mactex/}
+    \item \url{http://www.tug.org/protext/}
+\end{itemize}
+
+\section{Editoren}
+
+Der Wikipedia-Artikel zu \LaTeX\ gibt eine Übersicht der verfügbaren Editoren (\url{https://de.wikipedia.org/wiki/LaTeX#Entwicklungsumgebungen}). Erfahrungen habe ich selber mit TeXnicCenter, Kile, Texmaker, LaTeXila, Eclipse und LaTeXila gesammelt. Zu den Vorteilen von \LaTeX-Editoren zählen die Syntax-Hervorhebung, die Autovervollständigung, die Rechtschreibkorrektur und das Aufrufen von pdflatex per Knopfdruck. Zu den erwähnten Editoren möchte ich noch kurz etwas schreiben.
+
+\subsection{Eclipse mit texlipse}
+
+Eclipse ist eigentlich eine Entwicklungsumgebung für Java, die aber durch Plugins für fast jede andere Programmier- und Skriptsprache genutzt werden kann. Mit texlipse gibt es auch ein Plugin für \LaTeX. texlipse richtet sich an all die, die schon Erfahrung mit Eclipse haben. Dafür erhält man dann viele Funktionen, die andere \LaTeX-Editoren nicht bieten. Der größte Vorteil ist wahrscheinlich, dass Fehler direkt im Text-Editor angezeigt werden. Dadurch findet man viel schneller Fehler in Formeln. Die Autovervollständigung zeigt zu den Befehlen zusätzliche Informationen an. Aber leider konnte ich noch nicht herausfinden, wie man zusätzlich Befehle zu Autovervollständigung hinzufügt.\\
+Das Einrichten von texlipse ist relativ einfach, wenn man sich an die Anleitung auf \url{http://texlipse.sourceforge.net/} hält.
+Noch einfacher ist es, wenn man die von Torsten Richter zur Verfügung gestellte \LaTeX-Umgebung Eclipse4LaTeX nutzt, die ihr unter \url{http://www.tortools.de/doku.php/latex:latex-umgebung} findet.
+
+\subsection{Texmaker}
+
+Texmaker empfehle ich für \LaTeX-Anfänger. Unter Linux muss man diesen Editor nur installieren und kann direkt loslegen. Unter Windows ist das Einrichten aber auch sehr einfach (siehe Anhang \ref{sec:texmaker}). Formeln kann man leicht zusammen klicken und für viele Symbole gibt es einen entsprechenden Button zum Hinzufügen. Die Autovervollständigung funktioniert sehr gut und lässt sich leicht um fehlende Befehle ergänzen. Alles wichtige über Texmaker findet man auf der zugehörigen Webseite \url{http://www.xm1math.net/texmaker/} .
+
+\subsection{Kile}
+
+Kile ist nur für Linux (und Unix) erhältlich. Dieser Editor ist etwas unübersichtlicher als Texmaker. Beim Funktionsumfang ist Texmaker wahrscheinlich auch schon an Kile vorbei gezogen. Kile fügt sich aber besser in KDE ein. Die Website von Kile \url{http://kile.sourceforge.net/index.php} bietet nicht viele Informationen, aber eine sehr umfangreiche, englische Anleitung ist vorhanden.
+
+\subsection{LaTeXila}
+
+Das was Kile für KDE ist, das ist LaTeXila für Gnome. Der Funktionsumfang ist sehr beschränkt, aber alles wichtige ist trotzdem vorhanden. LaTeXila startet sehr schnell und eignet sich damit sehr gut zum Ansehen von \LaTeX-Dokumenten. Die Webseite \url{http://projects.gnome.org/latexila/} bietet fast keine Informationen.
+
+\subsection{TeXnicCenter}
+
+TeXnicCenter gibt es nur für Windows und es ist wahrscheinlich der \LaTeX-Editor mit den meisten Funktionen. Die Menüs sind voll mit \LaTeX-Befehlen. Das Programm lässt sich beliebig an die eigenen Wünsche anpassen. Auch als Anfänger bin ich 2005 sehr gut mit diesem Editor zurecht gekommen, da man die vielen Konfigurationsmöglichkeiten auch einfach ignorieren kann. Die Webseite \url{http://www.texniccenter.org/} ist sehr informativ und verfügt auch über eine ausführliche Dokumentation.\\
+Es wird empfohlen TeXnicCenter in Kombination mit MiKTeX und nicht mit TeX Live zu nutzen.
+
+\section{Zeichenkodierung}
+
+Diese Vorlage ist seid Version 1.1 nur noch als UTF8-Version verfügbar. Ich habe mich dazu entschieden, da UTF8 die Standard-Kodierung ist und meist nur ältere Programme es nicht unterstützen. Unter Windows nutzen leider noch viele Editoren den ISO-8859-1-Zeichensatz, obwohl diese auch UTF8 unterstützen.
+
+Möchte man trotzdem mit dem ISO-8859-1-Zeichensatz arbeiten, dann muss man zuerst in der Datei \verb+00_protokoll.tex+ den optimalen Parameter (in eckigen Klammern) des Paketes \verb+inputenc+ von \verb+utf8+ nach \verb+latin1+ ändern. Anschließend konvertiert man alle Dateien, z.B. mit Notepad++\footnote{\url{http://notepad-plus-plus.org/}}. Dadurch bleiben alle Sonderzeichen erhalten, was nicht der Fall ist, wenn man die Dateien einfach als ISO-8859-1 abspeichert.
+
+\section{Rechtschreibprüfung}
+
+Arbeitet man unter Linux, dann muss man sich um dieses Thema eigentlich keine Gedanken machen. Die Editoren sollten alle mit den gebräuchlichen Programmen (aspell, hunspell usw.) zusammenarbeiten. Passende Wörterbücher gehören eigentlich zur Grundausstattung einer jeden Linux-Distribution.
+
+Unter Windows gibt es erst einmal keine vorinstallierten Wörterbücher, aber auch Aspell ist für Windows verfügbar. Hat man dieses installiert, dann kann man es mit den meisten Editoren nutzen. TeXnicCenter und texlipse verfügen schon über eine eingebaute Rechtschreibkorrektur, diese benötigt aber noch passende Wörterbücher. Dabei handelt es sich um Text-Dateien mit der Dateiendung \verb+.dic+ bzw. \verb+.dict+. Im Internet gibt es unterschiedliche Quellen für solche Wörterbücher. Auch Texmaker besitzt eine Rechtschreibkorrektur. Es werden sogar schon Wörterbücher installiert, aber das gewünsche Wörterbuch muss man erst in den Optionen auswählen\footnote{\texttt{Optionen > Texmaker konfigurieren > Editor > Rechtschreibwörterbuch}}.
+
+\subsection{Grammatikkorrektur}
+
+Es ist sogar möglich die Grammatik automatisch überprüfen zu lassen. Dazu dient das Programm LanguageTool\footnote{\url{https://languagetool.org/}}. Als Plugin für Firefox und Thunderbird nutze ich LanguageTool schon seid einiger Zeit, Erfahrungen mit \LaTeX\ habe ich aber noch keine. Eine Anleitung ist im Wiki des Projektes zu finden: \url{http://wiki.languagetool.org/checking-la-tex-with-languagetool}.

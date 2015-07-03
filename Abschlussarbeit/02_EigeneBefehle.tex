@@ -1,0 +1,11 @@
+% Eigene Befehle eignen sich gut um Abkürzungen für lange Befehle zu erstellen. Die Syntax ist folgende:
+% \newcommand{neuer Befahl}{ein langer Befehl}
+% Das folgende Beispiel fügt ein Bild mit bestimmten vorgegebenen Optionen ein:
+\newcommand{\cImage}[2][0.5]{
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=#1\textwidth]{#2}
+    \end{figure}
+}
+% #1 und #2 sind Parameter, die man \cImage übergeben muss. In 10_Titelseite.tex wird dieser Befehl verwendet. Der Parameter ist dort Bilder/titelseite.jpg.
+% Benötigt man keine Parameter, dann lässt man [2] weg. Werden zusätzliche Parameter benötigt, dann kann man die Zahl auf maximal 9 erhöhen.
