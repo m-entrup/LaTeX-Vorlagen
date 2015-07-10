@@ -1,14 +1,14 @@
-%  Autor: Michael Entrup geb. Epping                            
-%  E-Mail: michael.entrup@wwu.de                                
-%  Version: 1.7.0                                               
-%  Datum: Juli 2015                                         
+%  Autor: Michael Entrup geb. Epping
+%  E-Mail: michael.entrup@wwu.de
+%  Version: 1.7.0
+%  Datum: Juli 2015
 %  Info: Dies is eine komplexe Vorlage für das erstellen einer Abschlussarbeit.
 %		Um den Inhalt von sonstigen Dingen zu trennen, besteht die Vorlage aus mehreren Dateien.
 %		Dies ist die Hauptdatei. Sie sollte nicht verändert werden.
 %		Hier werden die Einstellungen festgelegt und Pakete eingebunden.
 %		Alles weitere wird über die Dateien verändert, die mit "0X_" beginnen.
 %		Für den eigentliche Inhalt sollten folglich die Dateien "10_Inhalt.tex" und "20_Anhang.tex" verwendet werden.
-%  Copyright: CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)                                                             
+%  Copyright: CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)
 
 % Änderungen 1.2 -> 1.3
 % * Bei der Verwendung von texlive2012 gibt es Probleme mit myalphadin.
@@ -20,14 +20,14 @@
 
 % Änderungen 1.3 -> 1.4
 % * Das Paket "ifthenx" gibt es unter Ubuntu 12.04 mit texlive 2009-15 nicht. Als alternative habe ich "xifthen" eingetragen.
-% * Tabulatoren habe ich durch Leerzeichen ersetzt. Dadurch bleibt das Layout (Einrücken und Position Kommentare) erhalten, 
+% * Tabulatoren habe ich durch Leerzeichen ersetzt. Dadurch bleibt das Layout (Einrücken und Position Kommentare) erhalten,
 %   egal mit welchem Editor man die Dateien öffnet.
 % * Ich habe einen Copyright-Vermerk hinzugefügt, nämlich dass es im Prizip keines gibt.
 % * Neuer Abschnitt: latexmk
 % * Neuer Abschnitt: Verbatim
 % * Die Bilddatei "titelseite.jpg" wurde entfernt (wegen Copyright), da die Vorlage ab jetzt öffentlich zugänglich sein soll.
 % * "README.txt" im Verzeichnis Bilder wurde erstellt.
-% * Literaturangabe der Anleitung zur Optik, Wärmelehre und Atomphysik hinzugefügt. 
+% * Literaturangabe der Anleitung zur Optik, Wärmelehre und Atomphysik hinzugefügt.
 
 % Änderungen 1.4 -> 1.5
 % * Meinen Namen und meine E-Mail geändert.
@@ -59,7 +59,7 @@
 % # Allgemeines #
 % ###############
 
-% Zeilen, die mit einem Prozentzeichen beginnen sind Kommentare. 
+% Zeilen, die mit einem Prozentzeichen beginnen sind Kommentare.
 % Alle verwendeten Funktionen sind mit solchen Kommentaren versehen, so dass man den Zweck der jeweiligen Funktion nachvollziehen kann.
 
 % ######################################
@@ -67,18 +67,25 @@
 % ######################################
 
 \documentclass[
+% Dies sind globale Parameter. Sie gelten für die Dokumentenklasse selbst, aber auch für Pakete, welche später geladen werden.
 	% Papierformat
-	a4paper,  
-    % Zweiseitig oder Einseitig                                            
-    twoside=false,  
-    % Schriftgröße                                            
-    12pt,       
-	% schreibt die Papiergröße korrekt ins Ausgabedokument                                         
-    pagesize=auto,  
+	paper=a4,
+    % Zweiseitig oder Einseitig
+    twoside=false,
+    % BCOR steht für Bindekorrektur und fügt einen zusätzlichen Rand ein. Da man eine Abschlussarbeit für gewöhnlich bindet, sollte man diesen Wert an die verwendete Bindung anpassen.
+    BCOR=0mm,
+    % Schriftgröße
+    fontsize=12pt,
+	% schreibt die Papiergröße korrekt ins Ausgabedokument
+    pagesize=auto,
+    % Normalerweise wird die erste Zeile eines Absatzes eingerückt, um diesen hervorzuheben. Als Alternative kann man parskip aktivieren, womit statt dem Einrücken ein vertikaler Abstand verwendet wird. Mögliche Werte sind half und full.
+    %parskip=half,
     % Linie unterhalb der Kopfzeile
-    headsepline=true, 
-    % Markiert zu lange und zu kurze Zeilen. Die PDF-Datei enthält außerdem keine klickbarebn Links mehr.                                     
-    draft=false                                            
+    headsepline=true,
+    % Kapitelnummern (in Kopfzeile), Bildunterschrift und Tabellenüberschriften erhalten keinen abschließenden Punkt. Alternative: enddot
+    numbers=noenddot,
+    % Markiert zu lange und zu kurze Zeilen. Die PDF-Datei enthält außerdem keine klickbarebn Links mehr.
+    draft=false
 ]{scrbook}
 % Es gibt die Dokumenttypen scrartcle, srcbook, scrreprt und scrlettr. Diese gehören zum KOMA-Skript und sollten für deutsche Texte benutzt werden.
 % Für englische Texte wählt man entsprechend article, book, report und letter.
@@ -92,33 +99,33 @@
 % Weitere sollten in der Datei"`01_EigenePakete.tex"' hinzugefügt werden.
 
 % Legt die Zeichenkodierung fest, z.B UTF8
-\usepackage[utf8]{inputenc}      
-% Silbentrennung nach neuer deutscher und englischer Rechtschreibung                                             
+\usepackage[utf8]{inputenc}
+% Silbentrennung nach neuer deutscher und englischer Rechtschreibung
 \usepackage[ngerman,english]{babel}
-% Mathepaket                                           
+% Mathepaket
 \usepackage{amsmath}
-% Wird benötigt um \ifthenelse zu benutzen                                                          
+% Wird benötigt um \ifthenelse zu benutzen
 \usepackage{xifthen}
-% Zum flexiblen Einbinden von Grafiken, pdftex ist optional                                                          
+% Zum flexiblen Einbinden von Grafiken, pdftex ist optional
 \usepackage[pdftex]{graphicx}
-% Abstände zwischen Buchstaben und Wörtern werden verbessert.
-% Dies führt z.B. dazu, dass weniger Silbentrennung genutzt wird.                                                 
-\usepackage{microtype}
-% Ermöglicht die Nutzung von \unit[Zahl]{Einheit}                                                        
+% Ermöglicht die Nutzung von \unit[Zahl]{Einheit}
 \usepackage{units}
-% Einfaches wechseln zwischen unterschiedlichen Zeilenabständen                                                            
+% Einfaches wechseln zwischen unterschiedlichen Zeilenabständen
 \usepackage{setspace}
-% Darstellung für Caption s.u.                                                         
+% Darstellung für Caption s.u.
 \usepackage[font=small,labelfont=bf,labelsep=endash,format=plain]{caption}
-% Zusatzfunktionen zum zitieren    
+% Zusatzfunktionen zum zitieren
 \usepackage{cite}
 % Wird für Kopf- und Fußzeile benötigt.
-% Es gibt Alternativen, für Klassen aus dem KOMA-Script sollte scrlayer-scrpage verwendet werden.                                                             
+% Es gibt Alternativen, für Klassen aus dem KOMA-Script sollte scrlayer-scrpage verwendet werden.
 \usepackage{scrlayer-scrpage}
-% Beide Pakete werden für die Ausrichtung der Tabellenspalten benötigt.                                                         
+% Beide Pakete werden für die Ausrichtung der Tabellenspalten benötigt.
 \usepackage{array,dcolumn}
-% Verlinkt Textstellen im PDF Dokument. Es wird empfohlen dieses Paket immer zuletzt zu laden.                                                    
-\usepackage{hyperref}                                                         
+% Verlinkt Textstellen im PDF Dokument. Es wird empfohlen dieses Paket immer zuletzt zu laden.
+\usepackage[pdfpagelabels]{hyperref}
+% Abstände zwischen Buchstaben und Wörtern werden verbessert.
+% Dies führt z.B. dazu, dass weniger Silbentrennung genutzt wird.
+\usepackage{microtype}
 
 % weitere Pakete einbinden
 \input{01_EigenePakete}
@@ -143,21 +150,21 @@
 
 \begin{document}
 	% Schreibsprache Deutsch.
-	\selectlanguage{ngerman} 
-	% 1 1/2 facher Zeilenabstand für bessere Lesbarkeit.                                
-	\onehalfspacing  
+	\selectlanguage{ngerman}
+	% 1 1/2 facher Zeilenabstand für bessere Lesbarkeit.
+	\onehalfspacing
 	% Überschriften erhalten Serifen.
-	% Standart ist '\sffamily', also Serifenfrei. Alternativ ist auf '\ttfamily' möglich.                                        
+	% Standart ist '\sffamily', also Serifenfrei. Alternativ ist auf '\ttfamily' möglich.
 	\addtokomafont{sectioning}{\rmfamily}
-	% Nummerierung der Formeln entsprechend der Section (z.B. 1.1).                 
-	\numberwithin{equation}{section}  
-	% Ändert Schriftgröße und Zeilenabstand bei captions von Bildern und Tabellen.                         
+	% Nummerierung der Formeln entsprechend der Section (z.B. 1.1).
+	\numberwithin{equation}{section}
+	% Ändert Schriftgröße und Zeilenabstand bei captions von Bildern und Tabellen.
 	\addtokomafont{caption}{\small\linespread{1}\selectfont}
 
 % #######################################
 % # Kopf- und Fußzeile konfigurieren    #
 % #######################################
- 
+
 	% In 05_Kopf-Fuß.tex kann man Kopf- und Fußzeile verändern.
 	% Löscht man die Datei 05_Kopf-Fuß.tex, dann wird die Standardeinstellung verwendet.
 	\IfFileExists{05_Kopf-Fuss}{
@@ -169,15 +176,15 @@
 % ###################################
 
 	% , in Tabellen untereinander stellen
-	\newcolumntype{,}{D{,}{,}{-1}} 
-	% +- in Tabellen untereinander stellen                            
-	\newcolumntype{p}{D{p}{\pm}{-1}}                           
+	\newcolumntype{,}{D{,}{,}{-1}}
+	% +- in Tabellen untereinander stellen
+	\newcolumntype{p}{D{p}{\pm}{-1}}
 
 % ########################
 % # Titelseite einbinden #
 % ########################
 
-	\input{04_Titelseite}   
+	\input{04_Titelseite}
 
 	% Römische Ziffern als Seitenzahlen für das Inhaltsverzeichnis
 	\setcounter{page}{1}
@@ -189,13 +196,13 @@
 
 	\tableofcontents
 	\newpage
-	
+
 	% Zurücksetzen der Seitenzahlen auf arabische Ziffern
 	\setcounter{page}{1}
 	\pagenumbering{arabic}
-	
+
 	% Ab hier mit Kopf- und Fußzeile
-	\pagestyle{scrheadings}                                    
+	\pagestyle{scrheadings}
 
 % ###################################
 % # Den Inhalt der Arbeit einbinden #

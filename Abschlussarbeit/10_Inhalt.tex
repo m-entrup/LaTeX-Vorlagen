@@ -69,7 +69,7 @@ Einheiten erzeugt man am besten mit dem Paket unit. Ein Beispiel soll zeigen wie
 
 \section{Tabelle}
 
-Tabellen sind sehr nützlich um Messwerte, aber auch die Ergebnisse einer Auswertung übersichtlich darzustellen. Auch hier gilt wieder, dass ein guter Editor sehr hilfreich ist. Das Grundgerüst einer Tabelle kann man nämlich meist mit einem Wizard erstellen. Noch einfacher geht es, wenn man direkt mit Exel oder OpenOffice/LibreOffice Calc die Tabellen erzeugt. Plugins, die diese Aufgabe erledigen, kann man einfach mit einer Suchmaschine finden.
+Tabellen sind sehr nützlich um Messwerte und auch die Ergebnisse einer Auswertung übersichtlich darzustellen. Auch hier gilt, dass ein guter Editor sehr hilfreich ist. Das Grundgerüst einer Tabelle kann man meist mit einem Wizard erstellen. Noch einfacher geht es, wenn man direkt mit Excel oder OpenOffice/LibreOffice Calc die Tabellen erzeugt. Plugins, die diese Aufgabe erledigen, kann man einfach mit einer Suchmaschine finden.
 
 Diese Vorlage bietet schon ein paar fortgeschrittene Funktionen für das Arbeiten mit Tabellen. Tabelle \ref{tab:1} zeigt die Ausrichtung an Kommata und $\pm$.
 
@@ -135,14 +135,14 @@ Fehlende Silbentrennung ist ein Problem, das häufig auftritt, wenn man mit viel
 
 \section{latexmk}
 
-Um ein vollständiges Dokument mit \LaTeX\ zu erzeugen sind meist mehrere Durchläufe von \verb+latex+ bzw. \verb+pdflatex+ nötig. Verwendet man Zitate, dann muss man zusätzlich noch \verb+bibtex+ aufrufen. Es gibt jedoch mehrere Programme, die das Erzeugen von Dokumenten mit \LaTeX\ vereinfachen. Eines davon ist \textbf{latexmk}. \textbf{latexmk} sollte automatisch mit jeder \LaTeX-Distribution installiert werden. Zusätzlich ist noch Perl (\url{http://www.perl.org/}) notwendig, das unter Windows extra installiert werden muss. Bei Linux ist es für gewöhnlich schon installiert.\\
-Möchte man eine PDF-Datei erzeugen, dann reicht es aus 
+Um ein vollständiges Dokument mit \LaTeX\ zu erzeugen sind meist mehrere Durchläufe von \verb+latex+ bzw. \verb+pdflatex+ nötig. Verwendet man Zitate, so muss man zusätzlich noch \verb+bibtex+ aufrufen. Es gibt jedoch mehrere Programme, die das Erzeugen von Dokumenten mit \LaTeX\ vereinfachen. Eines davon ist \textbf{latexmk}. \textbf{latexmk} sollte automatisch mit jeder \LaTeX-Distribution installiert werden. Zusätzlich ist noch Perl (\url{http://www.perl.org/}) notwendig, das unter Windows extra installiert werden muss. Bei Linux ist es für gewöhnlich schon installiert.\\
+Möchte man eine PDF-Datei erzeugen, dann reicht es aus
 
 \begin{verbatim}
    latexmk -pdf "00_protokoll.tex"
 \end{verbatim}
 
-auszuführen um das fertige Dokument 00\_protokoll.pdf zu erhalten. \textbf{latexmk} überprüft dabei automatisch welche Dateien noch aktuell sind und führt entsprechend nur die nötigen Schritte aus. Hat sich z.\,B. nichts geändert, dann gibt \textbf{latexmk} aus 
+auszuführen um das fertige Dokument 00\_protokoll.pdf zu erhalten. \textbf{latexmk} überprüft dabei automatisch welche Dateien noch aktuell sind und führt entsprechend nur die nötigen Schritte aus. Hat sich z.\,B. nichts geändert gibt \textbf{latexmk} aus
 
 \begin{verbatim}
    Latexmk: All targets (00_protokoll.pdf) are up-to-date
@@ -160,7 +160,7 @@ In dieser Vorlage wird häufig die Umgebung \textbf{verbatim} verwendet. Damit i
     \end{v...m}
 \end{verbatim}
 
-\verb+\end{v...m}+ muss man natürlich durch \verb+\end{verbatim}+ ersetzen. Ich kann es in diesem Fall nicht verwenden, da sonst die Verbatim-Umgebung zu früh beendet wird. Möchte man direkt im Text diese Formatierung anwenden, dann lässt sich 
+\verb+\end{v...m}+ muss man natürlich durch \verb+\end{verbatim}+ ersetzen. Ich kann es in diesem Fall nicht verwenden, da sonst die Verbatim-Umgebung zu früh beendet wird. Möchte man direkt im Text diese Formatierung anwenden, dann lässt sich
 
 \begin{verbatim}
     \verb+Text, dessen Formatierung nicht berücksichtigt wird.+
@@ -183,13 +183,13 @@ Hier möchte ich auch auf die Anleitung des RRZN Hannover hinweisen, die man gü
     \item Wikibooks - Die Informationen über \LaTeX\ sind sehr umfangreich. Im englischen kann man eine PDF-Datei mit einem Umfang von fast 500 Seiten herunterladen.\\
     \url{https://en.wikibooks.org/wiki/LaTeX}\\
     \url{https://de.wikibooks.org/wiki/LaTeX-Kompendium}
-    \item Formel-Editor - Auf der Webseite CODECOGS wird ein einfach zu bedienender Formel-Editor angeboten. Die Formeln kann man auch direkt als Grafik abspeichern, um diese außerhalb von \LaTeX\ zu nutzen. Auch die weiteren Inhalte der Webseite sollte man sich ansehen, da es viele Nützliche Grafiken gibt,
+    \item Formel-Editor - Auf der Webseite CODECOGS wird ein einfach zu bedienender Formel-Editor angeboten. Die Formeln kann man auch direkt als Grafik abspeichern, um diese außerhalb von \LaTeX\ zu nutzen. Auch die weiteren Inhalte der Webseite sollte man sich ansehen, da es viele nützliche Grafiken gibt,
     die unter GNU General Public License (GPL) stehen.\\
     \url{http://www.codecogs.com/latex/eqneditor.php?lang=de-de}\\
     \url{http://www.codecogs.com/index.php}
     \item Anleitungen zu Paketen - Weiß man nicht, was ein Paket an Funktionen bietet, dann sollte man bei CTAN nach dessen Namen suchen. Als Ergebnis erhält man nicht nur die vollständige Anleitung, sondern auch Links zu ähnlichen Paketen und Themenseiten.\\
     \url{http://ctan.org/}
-    \item DANTE, Deutschsprachige Anwendervereinigung TeX e.V. - Diese Webseite darf natürlich nicht fehlen. Dort gibt es Anleitungen, Buchtipps und vieles mehr.\\
+    \item DANTE, deutschsprachige Anwendervereinigung TeX e.V. - Diese Webseite darf natürlich nicht fehlen. Dort gibt es Anleitungen, Buchtipps und vieles mehr.\\
     \url{http://www.dante.de/}
     \item ubuntuusers - Als Ubuntu-Nutzer muss ich natürlich auch auf den \LaTeX-Eintrag im Wiki von ubuntuusers verweisen. Das Wiki bietet keine große Fülle an Informationen, aber die aufgeführten Links sind sehr nützlich.\\
     \url{http://wiki.ubuntuusers.de/LaTeX}

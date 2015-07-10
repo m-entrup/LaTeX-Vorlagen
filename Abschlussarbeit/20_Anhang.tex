@@ -34,12 +34,12 @@ Als Editor bevorzuge ich Texmaker, da dieser alle wichtigen Funktionen bietet un
 \subsubsection{\LaTeX-Befehle einrichten}\label{sec:texmaker_conf}
 
 \begin{figure}[bh]
-\includegraphics[width=\textwidth]{Bilder/Texmaker_konfigurieren.png} 
+\includegraphics[width=\textwidth]{Bilder/Texmaker_konfigurieren.png}
 \caption{Dialog zum einrichten von Texmaker (hier Version 4.2)}
 \label{img:texmaker_conf}
 \end{figure}
 
-Abbildung \ref{img:texmaker_conf} zeigt den Dialog zum Einrichten von Texmaker. Dieser ist über den Menüeintrag \verb+Optionen > Texmaker konfigurieren+ zu erreichen. Beim ersten Start stehen hier noch die Befehle ohne Pfadangabe. Ist MiKTex, oder texlive auf dem eigenen PC installiert, dann muss hier nichts mehr geändert werden. Anders sieht es an einem PC in der Uni aus. texlive ist auf einem zentralen Netzlaufwerk installiert, das eigene Betriebssystem weiß jedoch nichts davon. Man könnte jetzt dem Betriebssystem texlive über die Umgebungsvariable PATH bekannt machen, aber ich möchte einen anderen Weg vorführen. Dazu ruft man \verb+Optionen > Texmaker konfigurieren+ auf und es wird der in Abbildung \ref{img:texmaker_conf} zu sehende Dialog angezeigt. Bei allen benötigten \LaTeX-Befehlen (das sind eigentlich nur PdfLaTeX und Bib(la)tex) muss der Pfad angepasst werden. Dazu fügt man am Anfang des entsprechenden Textfeldes \verb+\\wwuappl2\W\TeX\texlive2010\bin\win32+ ein. Aus 
+Abbildung \ref{img:texmaker_conf} zeigt den Dialog zum Einrichten von Texmaker. Dieser ist über den Menüeintrag \verb+Optionen > Texmaker konfigurieren+ zu erreichen. Beim ersten Start stehen hier noch die Befehle ohne Pfadangabe. Ist MiKTex, oder texlive auf dem eigenen PC installiert, dann muss hier nichts mehr geändert werden. Anders sieht es an einem PC in der Uni aus. texlive ist auf einem zentralen Netzlaufwerk installiert, das eigene Betriebssystem weiß jedoch nichts davon. Man könnte jetzt dem Betriebssystem texlive über die Umgebungsvariable PATH bekannt machen, aber ich möchte einen anderen Weg vorführen. Dazu ruft man \verb+Optionen > Texmaker konfigurieren+ auf und es wird der in Abbildung \ref{img:texmaker_conf} zu sehende Dialog angezeigt. Bei allen benötigten \LaTeX-Befehlen (das sind eigentlich nur PdfLaTeX und Bib(la)tex) muss der Pfad angepasst werden. Dazu fügt man am Anfang des entsprechenden Textfeldes \verb+\\wwuappl2\W\TeX\texlive2010\bin\win32+ ein. Aus
 
 \begin{verbatim}
    pdflatex -synctex=1 -interaction=nonstopmode %.tex
@@ -55,7 +55,7 @@ wird dadurch
 \subsubsection{Schnelles Übersetzen einrichten}
 
 \begin{figure}[bh]
-\includegraphics[width=\textwidth]{Bilder/Texmaker_konfigurieren2.png} 
+\includegraphics[width=\textwidth]{Bilder/Texmaker_konfigurieren2.png}
 \caption{Dialog zum einrichten von Texmaker (hier Version 4.2)}
 \label{texmaker_konf2}
 \end{figure}
