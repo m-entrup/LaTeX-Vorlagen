@@ -8,3 +8,6 @@
 *.nav
 *.out
 *.snm
+*.bbl
+*.blg
+node_modules

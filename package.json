@@ -1,0 +1,20 @@
+{
+  "name": "LaTeX-Vorlagen",
+  "version": "1.0.0",
+  "description": "Dies sind LaTeX-Vorlagen für dieverse Typen von Dokumenten.",
+  "homepage": "https://github.com/m-entrup/LaTeX-Vorlagen",
+
+  "author": {
+      "name": "Michael Entrup",
+      "url": "http://m-entrup.de"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m-entrup/LaTeX-Vorlagen.git"
+  },
+  "devDependencies": {
+      "grunt-cli": ">=0.1.13",
+      "grunt-trimtrailingspaces": ">=1.1.0"
+  }
+}
