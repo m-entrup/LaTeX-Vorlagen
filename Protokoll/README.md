@@ -36,7 +36,7 @@ Zuerst möchte ich auf meine Vorlage für eine Abschlussarbeit verweisen. Dort h
 [installUbu]: https://wiki.ubuntuusers.de/TeX_Live
 [TeXstudio]: http://texstudio.sourceforge.net/
 [Protokoll.tex]: https://github.com/m-entrup/LaTeX-Vorlagen/blob/master/Protokoll/Protokoll.tex
-[Bild] https://github.com/m-entrup/LaTeX-Vorlagen/blob/master/Protokoll/Bild.png
+[Bild]: https://github.com/m-entrup/LaTeX-Vorlagen/blob/master/Protokoll/Bild.png
 [Protokoll.pdf]: https://github.com/m-entrup/LaTeX-Vorlagen/blob/master/Protokoll/Protokoll.pdf
 [Hilfe:TeX]: https://de.wikipedia.org/wiki/Hilfe:TeX
 [bib]: https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
