@@ -1,0 +1,86 @@
+%  Autor: Michael Entrup geb. Epping
+%  E-Mail: michael.entrup@wwu.de
+%  Version: 1.0.0
+%  Datum: September 2015
+%  Info: Dies is eine einfache Vorlage für das Erstellen eines Briefes.
+%  Copyright: CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+\documentclass[
+	% Verwendete Sprache
+	ngerman,
+	% Schriftgröße
+	fontsize=11pt,
+	% Papierformat
+	paper=a4,
+	% Macht die erste Seite etwas größer, was für einseitige Briefe praktisch ist.
+	enlargefirstpage=on,
+	% Seitenzahl in der oberen, rechten Ecke (ab Seite 2), mit Linie unterhalb der Seitenzahl.
+	pagenumber=headright,
+	headsepline=on,
+	% Abstand zwischen den Absätzen
+	parskip=half,
+	% Telefonnummer und E-Mail des Absenders anzeigen
+	fromphone=on,
+	fromemail=true,
+	% Wie soll der Briefkopf ausgerichtet sein?
+	fromalign=right, % Alternativen: left, center, right
+	% Sollen Falzmarken verwendet werden?
+	foldmarks=true,
+	% Entwurfsmodus
+	draft=false
+]{scrlttr2}
+
+% Stellt Befehle zum einfügen von Blindtext zur Verfügung.
+\usepackage{blindtext}
+% Hier gibt man den Zeichensatz dieser Datei vor (schreibt man mit dem Windows Editor/Notepad, dann muss man hier 'latin1' statt 'utf8' verwenden.
+\usepackage[utf8]{inputenc}
+% Es werden Schriftarten mit Umlauten verwendet. So ersteint wirklich ein ä in der PDF-Datei und nicht ein a mit hochgestellten Punkten. Dies ist wichtig für die Volltextsuche.
+\usepackage[T1]{fontenc}
+% Hiermit wird die richtige Silbentrennung aktiviert. Außerdem wird eine passende Darstellung des Datums gewählt. Verwendet man kein KOMA-Script, dann werden auch die sonst englischsprachigen Begriffe, wie scapter, section, appendix usw. ins Deutsche übersetzt. Die in documentclass angegebene Sprache wird auch hier verwendet, falls man keinen optionalen Parameter angibt.
+\usepackage{babel}
+% Zur Darstellung von Webadressen, E-Mails usw. Besonders praktisch ist, dass man innerhalb von \url{} keine Maskierung verwenden muss: Statt '\_' verwendet man einfach '_'.
+\usepackage{url}
+% Schriftart Latin Modern
+\usepackage{lmodern}
+% Verbessert den Textsatz. Abstände zwischen Wörtern/Zeichen werden optimiert. Dieses Paket sollte immer zuletzt geladen werden.
+\usepackage{microtype}
+
+% Die folgenden Befehle dienen zur Eingabe der Daten des Absenders.
+% Nicht alle Daten werden verwendet.Möchte man weitere zum Briefkopf hinzufügen, so muss man diese als Option zu documentclass hinzufügen.
+% Bei dieser Vorlage werden zusätzlich zur Adresse die Telefonnummer und die E-Mail angezeigt.
+\setkomavar{fromname}{Vorname Nachname}
+\setkomavar{signature}{(Name des Absenders)}
+\setkomavar{fromaddress}{Straße und Hausnummer\\PLZ Stadt}
+\setkomavar{fromphone}{(01234) 56789-0}
+\setkomavar{fromfax}{(01234) 56789-12}
+\setkomavar{fromemail}{name@mail.com}
+\setkomavar{fromurl}{www.example.com}
+\setkomavar{frombank}{DE19 1234 1234 1234 1234 12\quad Meine Bank}
+% Man kann auch eigene Variablen definieren:
+\newkomavar[Steuernummer]{stnr}
+\setkomavar{stnr}{123/4567/8900}
+% Am Beispiel einer Fußzeile soll die weitere Verwendung der Variablen genauer erklärt werden.
+% \usekomavar{} fügt den zugewiesenen Wert ein.
+% Mit \usekomavar*{} kann man die Bezeichnung der Variable einfügen.
+\firstfoot{\usekomavar*{frombank}: \usekomavar{frombank}\\ \usekomavar*{stnr}: \usekomavar{stnr}}
+
+\begin{document}
+% Briefstil und Position des Briefkopfs
+\LoadLetterOption{DIN} % oder: DINmtext, SN, SNleft, KOMAold.
+\makeatletter 
+
+\setkomavar{date}{\today}
+
+\begin{letter}{Frau(Herrn) Name\\Adresse\\Adresszusatz\\PLZ Ort}
+
+\setkomavar{subject}{Hier einen Betreff eingeben}
+\opening{Sehr geehrte(r) Frau(Herr) ...}
+
+\Blindtext
+
+\closing{Mit freundlichen Grüßen}
+\ps(\blindtext)
+\encl{diverse Dokumente}
+
+\end{letter}
+\end{document}
