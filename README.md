@@ -4,10 +4,9 @@ Eine kleine Auswahl an Vorlagen für verschiedene Arten von Dokumenten.
 ## Welche Vorlagen gibt es?
 
 * [Abschlussarbeit][Abschluss]
-* [Protokoll][Protokoll]
-* [Vortrag][Vortrag]
-* Brief (in Arbeit...)
-* Poster (in Arbeit...)
+* [Protokoll]
+* [Vortrag]
+* [Brief]
 
 ## Anleitung
 
@@ -21,3 +20,4 @@ Die Vorlage für die Abschlussarbeit dient gleichzeitig als eine Art allgemeine 
 [Abschluss]: https://github.com/m-entrup/LaTeX-Vorlagen/tree/master/Abschlussarbeit
 [Protokoll]: https://github.com/m-entrup/LaTeX-Vorlagen/tree/master/Protokoll
 [Vortrag]: https://github.com/m-entrup/LaTeX-Vorlagen/tree/master/Vortrag
+[Brief]: https://github.com/m-entrup/LaTeX-Vorlagen/tree/master/Brief
