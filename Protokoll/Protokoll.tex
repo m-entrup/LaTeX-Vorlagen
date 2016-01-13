@@ -1,50 +1,103 @@
 %  Autor: Michael Entrup geb. Epping
 %  E-Mail: michael.entrup@wwu.de
-%  Version: 1.0.0
-%  Datum: Juli 2015
+%  Version: 1.1.0
+%  Datum: Januar 2016
 %  Info: Dies is eine einfache Vorlage für das erstellen eines Protokolls.
-%		Die Vorlage basiert auf einer Vorlage von Anke B. Schmidt.
-%		Sie ist auf die Verwendung im Rahmen der Experimentellen Übungen I im Fachbereich Physik der Uni Münster ausgelegt.
+%        Die Vorlage basiert auf einer Vorlage von Anke B. Schmidt.
+%        Sie ist auf die Verwendung im Rahmen der Experimentellen Übungen I
+%        im Fachbereich Physik der Uni Münster ausgelegt.
+%  Website: https://github.com/m-entrup/LaTeX-Vorlagen/tree/master/Protokoll
 %  Copyright: CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/)
 
-% scrartcl ist die KOMA-Script Variante von article. Für deutsche Texte sollte man generell die Klassen des KOMA-Scriptes verwenden.
+% Ein LaTeX-dokument benötigt immer eine Dokumenten-Klasse.
+% scrartcl ist die KOMA-Script Variante von article.
+% scrartcl ist von den 3 Hauptklassen (scrartcl, scrreprt, scrbook) die einfachste.
+% Für deutsche Texte sollte man generell die Klassen des KOMA-Scriptes verwenden.
+% So findet ihr die Anleitung: http://www.komascript.de/scrguide.
 \documentclass[
-	% Dies sind globale Parameter. Sie gelten für die Dokumentenklasse selbst, aber auch für Pakete, welche später geladen werden. ngerman wird auch dem Paket babel genutzt, weshalb bei diesem kein optionaler Parameter verwendet wird.
+	% Dies sind globale Parameter.
+	% Sie gelten für die Dokumentenklasse selbst, aber auch für Pakete, welche später geladen werden.
+	% ngerman wird auch dem Paket babel genutzt, weshalb bei diesem kein optionaler Parameter verwendet wird.
 	% Schriftgröße
 	fontsize=11pt,
 	% Papierformat
 	paper=a4,
 	% schreibt die Papiergröße korrekt ins Ausgabedokument
 	pagesize=auto,
-	% Normalerweise wird die erste Zeile eines Absatzes eingerückt, um diesen hervorzuheben. Als Alternative kann man parskip aktivieren, womit statt dem Einrücken ein vertikaler Abstand verwendet wird. Typische Werte sind false, half und full.
+	% Normalerweise wird die erste Zeile eines Absatzes eingerückt, um diesen hervorzuheben.
+	% Als Alternative kann man parskip aktivieren, womit statt dem Einrücken ein vertikaler Abstand verwendet wird.
+	% Typische Werte sind false, half und full.
 	parskip=false,
 	% Titelseite erzeugen
 	titlepage=on,
 	% Sprache des Dokuments
 	ngerman
 ]{scrartcl}
-% Hier gibt man den Zeichensatz dieser Datei vor (schreibt man mit dem Windows Editor/Notepad, dann muss man hier 'latin1' statt 'utf8' verwenden.
-\usepackage[utf8]{inputenc}
-% Es werden Schriftarten mit Umlauten verwendet. So ersteint wirklich ein ä in der PDF-Datei und nicht ein a mit hochgestellten Punkten. Dies ist wichtig für die Volltextsuche.
+
+% Einbinden von Paketen:
+% LaTeX lässt sich durch diverse Pakete erweitern.
+% Auf die folgenden Pakete sollte man nicht verzichten, da sie sinnvolle Funktionen hinzufügen.
+
+% Es werden Schriftarten mit Umlauten verwendet.
+% So erscheint wirklich ein ä in der PDF-Datei und nicht ein a mit hochgestellten Punkten.
+% Dies ist wichtig für die Volltextsuche.
+% http://ctan.org/pkg/fontenc
 \usepackage[T1]{fontenc}
-% Hiermit wird die richtige Silbentrennung aktiviert. Außerdem wird eine passende Darstellung des Datums gewählt. Verwendet man kein KOMA-Script, dann werden auch die sonst englischsprachigen Begriffe, wie scapter, section, appendix usw. ins Deutsche übersetzt. Die in documentclass angegebene Sprache wird auch hier verwendet, falls man keinen optionalen Parameter angibt.
-\usepackage{babel}
-% Bietet erweiterte Funktionen beim setzten von Formeln (wird z.B. für die align-Umgebung benötigt).
-\usepackage{amsmath}
-% Schriftart, die am Bildschirm besser lesbar ist.
-\usepackage{lmodern}
+
+% Hier gibt man den Zeichensatz dieser Datei vor.
+% Schreibt man mit dem Windows Editor/Notepad, muss man hier 'latin1' statt 'utf8' verwenden.
+% http://ctan.org/pkg/inputenc
+\usepackage[utf8]{inputenc}
+
 % Zum Einbinden von Bildern (mehr Dateiformate werden unterstützt).
+% http://ctan.org/pkg/graphicx
 \usepackage{graphicx}
-% Zur Darstellung von Webadressen, E-Mails usw. Besonders praktisch ist, dass man innerhalb von \url{} keine Maskierung verwenden muss: Statt '\_' verwendet man einfach '_'.
+
+% Hiermit wird die richtige Silbentrennung aktiviert.
+% Außerdem wird eine passende Darstellung des Datums gewählt.
+% Verwendet man kein KOMA-Script, dann werden auch die sonst englischsprachigen Begriffe, wie chapter, section, appendix usw. ins Deutsche übersetzt.
+% Die in documentclass angegebene Sprache wird auch hier verwendet, falls man keinen optionalen Parameter angibt.
+% http://ctan.org/pkg/babel
+\usepackage{babel}
+
+% Bietet erweiterte Funktionen beim setzten von Formeln.
+% http://ctan.org/pkg/amsmath
+\usepackage{amsmath}
+
+% Einheiten besser darstellen.
+% http://ctan.org/pkg/units
+\usepackage{units} % \usepackage[loose]{units} für größeren Abstand zwischen Zahl und Einheit
+
+% fontenc mit der Option T1 nutzt die Schrift European Computer Modern (EC).
+% EC sieht nicht besonders gut aus, weshalb man besser Latin Modern (LM) verwendt.
+% Alternativen findet man hier: http://www.tug.dk/FontCatalogue/.
+\usepackage{lmodern}
+
+% Zur Darstellung von Webadressen, E-Mails usw.
+% Besonders praktisch ist, dass man innerhalb von \url{} keine Maskierung verwenden muss:
+% Statt '\_' verwendet man einfach '_'.
+% http://ctan.org/pkg/url
 \usepackage{url}
-% Verbessert den Textsatz. Abstände zwischen Wörtern/Zeichen werden optimiert. Dieses Paket sollte immer zuletzt geladen werden.
+
+% Verbessert den Textsatz.
+% Abstände zwischen Wörtern/Zeichen werden optimiert.
+% Dieses Paket sollte immer zuletzt geladen werden.
+% http://ctan.org/pkg/microtype
 \usepackage{microtype}
+
+\begin{document}
 
 % Hier werden die Parameter für die Titelseite festgelegt.
 % Es wird keine eigene Titelseite gestaltet, sondern der Standard der benutzten Dokumentenklasse verwendet.
 % Die Titelseite wird weiter Unten mit \maketitle erzeugt.
-\title{Protokoll zu Versuch V1:\\\LaTeX-Vorlage für ein Versuchsprotokoll}
-\subtitle{durchgeführt am 08.07.2015 bei Betreuer X Y}
+\title{
+	Protokoll zu Versuch V1:\\
+	\LaTeX-Vorlage für ein Versuchsprotokoll
+}
+\subtitle{
+	durchgeführt am 08.07.2015\\
+	bei Betreuer X Y
+}
 \author{
 	% Anders als sonst nutzt man hier das \and für den Zeilenumbruch. \\ kann auch verwendet werden, man sollte nur nicht beides kombinieren.
 	Gruppe 01 Mi\and
@@ -53,15 +106,15 @@
 }
 \date{\today}
 
-\begin{document}
-
 % Titel (bzw. Titelseite) erzeugen.
 \maketitle
 
 % Die Dokumentenklasse Artikel sieht keine separate Seite für den Titel vor.
 \newpage
 
-% Inhaltsverzeichnis erzeugen. Als Quelle dient Protokoll.toc. Diese Datei wird automatisch von LaTeX erzeugt.
+% Inhaltsverzeichnis erzeugen.
+% Als Quelle dient Protokoll.toc.
+% Diese Datei wird automatisch von LaTeX erzeugt.
 \tableofcontents
 
 \newpage
@@ -80,7 +133,7 @@ Diese Vorlage soll Ihnen den Einstieg in das Erstellen von Versuchsprotokollen m
 	\centering
 	% Keine Angabe der Dateiendung nötig, TeX durchsucht den Ordner, in dem dieser Quelltext liegt
 	\includegraphics[width=0.6\textwidth]{Bild}
-	\caption{Das ist die Bildunterschrift.}\label{Bild}
+	\caption{Dies ist die Bildunterschrift.}\label{Bild}
 \end{figure}
 
 Wenn Sie pdf\LaTeX\ verwenden, können Sie Dateien im jpeg-, png-, oder pdf-Format einbinden, wie mit der Abbildung~\ref{Bild} geschehen. \LaTeX\ dagegen erwartet Dateien ausschließlich im eps- oder ps-Format \cite{andyroberts}.
@@ -91,28 +144,39 @@ Hier sei auf die einschlägige Literatur verwiesen, zum Beispiel Referenz~\cite{
 
 \subsection{Formeln}
 
-Beim Darstellen von Formeln demonstriert \LaTeX\ seine ganze Stärke. Man kann kurze Formeln in den laufenden Text einbinden, zum Beispiel $a^2+b^2=c^2$, den Satz des Pythagoras. Möchte man abgesetzte Formeln verwenden, die durchnummeriert und referenzierbar sind, dann so:
-%
-\begin{align}\label{formel1}
-	\textrm{Student}=\int_\textrm{früh}^\textrm{spät} \mu \; \mathrm{d}e.
-\end{align}
-%
-Auf Formel~(\ref{formel1}), die der geneigte Leser bitte nicht allzu ernst nehmen möge, kann man dann später verweisen.
+Beim Darstellen von Formeln demonstriert \LaTeX\ seine ganze Stärke. Man kann kurze Formeln in den laufenden Text einbinden, zum Beispiel $a^2+b^2=c^2$, den Satz des Pythagoras. Möchte man abgesetzte Formeln verwenden, die durchnummeriert und referenzierbar sind, verwendet man eine der von \texttt{amsmath} \cite[Table 3.1]{amsmath} bereitgestellten Umgebungen.
+
+\begin{equation}
+	\textrm{Student} = \int_\textrm{früh}^\textrm{spät} \mu \; \mathrm{d}e. \label{formel1}
+\end{equation}
+
+Auf Formel~(\ref{formel1}), die der geneigte Leser bitte nicht allzu ernst nehmen möge, kann man später verweisen.
 
 \section{Diskussion}
 
 Mit Hilfe der zahlreichen Anleitungen, die online zu finden sind, sind Sie sicher bald in der Lage, Ihr Dokument ganz nach Ihren Wünschen zu erweitern und anzupassen. Früher oder später werden Sie auch auf die vielfältigen Möglichkeiten stoßen, das Layout anzupassen. Hierzu möchte ich Ihnen den einleitenden Text zu dem entsprechenden Kapitel aus Referenz~\cite{lshort} mitgeben:
-\begin{quote} Chapter 6 contains some potentially dangerous information about how to alter the standard document layout produced by \LaTeX. It will tell you how to change things such that the beautiful output of \LaTeX\ turns ugly or stunning, depending on your abilities.\end{quote}
 
-\begin{thebibliography}{9}
+\begin{quote}
+	Chapter 6 contains some potentially dangerous information about how to alter the standard document layout produced by \LaTeX. It will tell you how to change things such that the beautiful output of \LaTeX\ turns ugly or stunning, depending on your abilities.
+\end{quote}
 
-\bibitem{anleitung} Anke B.~Schmidt, \emph{Anleitungen zu den Experimentellen Übungen zur \ldots}.
 
-\bibitem{andyroberts} Andrew Roberts. \emph{Getting to Grips with} \LaTeX, a most useful website: \url{http://www.andy-roberts.net/writing/latex}.
+\begin{thebibliography}{9} % Bei 10 und mehr Einträgen sollte man eine zweistellige Zahl verwenden (siehe https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management).
 
-\bibitem{hobbits} Manuela Jürgens und Thomas Feuerstack, \LaTeX\ \emph{-- eine Einführung und ein bisschen mehr \ldots}, FernUniversität in Hagen, Februar 2013.
+\bibitem{anleitung}
+Anke B.~Schmidt, \emph{Anleitungen zu den Experimentellen Übungen zur \ldots}.
 
-\bibitem{lshort} Tobias Oetiker, Hubert Partl, Irene Hyna und Elisabeth Schlegl, \emph{The Not So Short Introduction to} \LaTeX\ 2$\varepsilon$.
+\bibitem{andyroberts}
+Andrew Roberts. \emph{Getting to Grips with} \LaTeX, a most useful website: \url{http://www.andy-roberts.net/writing/latex}.
+
+\bibitem{hobbits}
+Manuela Jürgens und Thomas Feuerstack, \LaTeX\ \emph{-- eine Einführung und ein bisschen mehr \ldots}, FernUniversität in Hagen, Februar 2013.
+
+\bibitem{amsmath}
+User’s Guide for the amsmath Package (Version 2.0): \url{http://mirrors.ctan.org/macros/latex/required/amslatex/math/amsldoc.pdf}.
+
+\bibitem{lshort}
+Tobias Oetiker, Hubert Partl, Irene Hyna und Elisabeth Schlegl, \emph{The Not So Short Introduction to} \LaTeX\ 2$\varepsilon$.
 
 \end{thebibliography}
 
