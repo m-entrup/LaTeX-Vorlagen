@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-trimtrailingspaces');
+  grunt.loadNpmTasks('grunt-githooks');
 
   grunt.initConfig({
 
@@ -11,12 +12,18 @@ module.exports = function(grunt) {
           filter: 'isFile',
           encoding: 'utf8',
           failIfTrimmed: false
-        }
-      }
-    }
+        },
+      },
+    },
+
+    githooks: {
+      all: {
+        'pre-commit': 'trimtrailingspaces',
+      },
+    },
 
   });
 
-   grunt.registerTask('default', ['trimtrailingspaces']);
+  grunt.registerTask('default', ['trimtrailingspaces']);
 
 };

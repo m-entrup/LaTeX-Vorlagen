@@ -4,18 +4,17 @@
   "description": "Dies sind LaTeX-Vorlagen für dieverse Typen von Dokumenten.",
   "license": "CC-BY-4.0",
   "homepage": "https://github.com/m-entrup/LaTeX-Vorlagen",
-
   "author": {
-      "name": "Michael Entrup",
-      "url": "http://m-entrup.de"
+    "name": "Michael Entrup",
+    "url": "http://m-entrup.de"
   },
-
   "repository": {
     "type": "git",
     "url": "https://github.com/m-entrup/LaTeX-Vorlagen.git"
   },
   "devDependencies": {
-      "grunt-cli": ">=0.1.13",
-      "grunt-trimtrailingspaces": ">=1.1.0"
+    "grunt-cli": ">=0.1.13",
+    "grunt-githooks": "^0.5.0",
+    "grunt-trimtrailingspaces": ">=1.1.0"
   }
 }
