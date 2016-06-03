@@ -1,7 +1,7 @@
 %  Autor: Michael Entrup geb. Epping
 %  E-Mail: michael.entrup@wwu.de
-%  Version: 1.7.1
-%  Datum: Juli 2015
+%  Version: 1.7.2
+%  Datum: April 2016
 %  Info: Dies is eine komplexe Vorlage für das erstellen einer Abschlussarbeit.
 %		Um den Inhalt von sonstigen Dingen zu trennen, besteht die Vorlage aus mehreren Dateien.
 %		Dies ist die Hauptdatei. Sie sollte nicht verändert werden.
@@ -59,6 +59,10 @@
 % * Inhalt der Anleitung überarbeitet:
 %   * TeXstudio als favorisierten Editor hinzugefügt
 %   * Grammatikkorrektur mit LanguageTool für Verbesserungen genutzt
+
+% Änderungen 1.7.1 -> 1.7.2
+% * Fehler bei zweiseitigem Layout behoben:
+%   * Nach der Titelseite wurde keine Leerseite eingefügt. Ursache war das Umschalten auf römische Seitenzahl. Durch ein cleardoublepage lässt sich das Problem beheben.
 
 % ###############
 % # Allgemeines #
@@ -192,6 +196,8 @@
 	\input{04_Titelseite}
 
 	% Römische Ziffern als Seitenzahlen für das Inhaltsverzeichnis
+	% cleardoublepage ist notwendig, damit bei zweiseitigem Layout nach der Titelseite eine leere Seite eingefügt wird.
+	\cleardoublepage
 	\setcounter{page}{1}
 	\pagenumbering{Roman}
 
