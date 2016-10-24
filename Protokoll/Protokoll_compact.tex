@@ -4,7 +4,7 @@
 	fontsize=11pt,
 	paper=a4,
 	pagesize=auto,
-	parskip=false,
+	parskip=half,
 	titlepage=on,
 	ngerman
 ]{scrartcl}
@@ -14,7 +14,7 @@
 \usepackage{graphicx}
 \usepackage{babel}
 \usepackage{amsmath}
-\usepackage{units}
+\usepackage{siunitx}
 \usepackage{lmodern}
 \usepackage{url}
 \usepackage{microtype}
@@ -74,6 +74,22 @@ Beim Darstellen von Formeln demonstriert \LaTeX\ seine ganze Stärke. Man kann k
 \end{equation}
 
 Auf Formel~(\ref{formel1}), die der geneigte Leser bitte nicht allzu ernst nehmen möge, kann man später verweisen.
+
+\subsection{Einheiten}
+
+Dank dem Paket \texttt{siunitx} ist es sehr einfach Einheiten sauber zu setzen:
+
+\begin{verbatim}
+\SI{0,1}{\meter\per\second}
+\end{verbatim}
+
+wird zu \SI{0,1}{\meter\per\second}. Zwischen Zahl und Einheit ist ein halber Abstand zu finden. Das Paket kann auch mit
+
+\begin{verbatim}
+$v = \frac{\SI{1}{m}}{\SI{10}{s}} = \SI{0,1}{m/s}$
+\end{verbatim}
+
+etwas anfangen und macht daraus $v = \frac{\SI{1}{m}}{\SI{10}{s}} = \SI{0,1}{m/s}$.
 
 \section{Diskussion}
 

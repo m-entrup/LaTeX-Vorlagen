@@ -27,7 +27,7 @@
 	% Normalerweise wird die erste Zeile eines Absatzes eingerückt, um diesen hervorzuheben.
 	% Als Alternative kann man parskip aktivieren, womit statt dem Einrücken ein vertikaler Abstand verwendet wird.
 	% Typische Werte sind false, half und full.
-	parskip=false,
+	parskip=half,
 	% Titelseite erzeugen
 	titlepage=on,
 	% Sprache des Dokuments
@@ -65,8 +65,8 @@
 \usepackage{amsmath}
 
 % Einheiten besser darstellen.
-% http://ctan.org/pkg/units
-\usepackage{units} % \usepackage[loose]{units} für größeren Abstand zwischen Zahl und Einheit
+% http://ctan.org/pkg/siunitx
+\usepackage{siunitx}
 
 % fontenc mit der Option T1 nutzt die Schrift European Computer Modern (EC).
 % EC sieht nicht besonders gut aus, weshalb man besser Latin Modern (LM) verwendt.
@@ -151,6 +151,22 @@ Beim Darstellen von Formeln demonstriert \LaTeX\ seine ganze Stärke. Man kann k
 \end{equation}
 
 Auf Formel~(\ref{formel1}), die der geneigte Leser bitte nicht allzu ernst nehmen möge, kann man später verweisen.
+
+\subsection{Einheiten}
+
+Dank dem Paket \texttt{siunitx} ist es sehr einfach Einheiten sauber zu setzen:
+
+\begin{verbatim}
+\SI{0,1}{\meter\per\second}
+\end{verbatim}
+
+wird zu \SI{0,1}{\meter\per\second}. Zwischen Zahl und Einheit ist ein halber Abstand zu finden. Das Paket kann auch mit
+
+\begin{verbatim}
+$v = \frac{\SI{1}{m}}{\SI{10}{s}} = \SI{0,1}{m/s}$
+\end{verbatim}
+
+etwas anfangen und macht daraus $v = \frac{\SI{1}{m}}{\SI{10}{s}} = \SI{0,1}{m/s}$.
 
 \section{Diskussion}
 
